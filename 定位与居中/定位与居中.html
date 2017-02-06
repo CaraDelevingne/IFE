@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定位与居中</title>
+	<style type="text/css">
+		*{
+			margin: 0 auto;
+			padding: 0;
+		}
+		.main{
+			width:600px;
+			border: thin solid #999;
+			height: 600px;
+			position: relative;
+		}
+		.box{
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			margin:auto;
+			background: #ccc;
+			width: 400px;
+			height: 200px;
+		}
+		.box>div{
+			background: #fc0;
+			width: 80px;
+			height: 80px;
+			position: absolute;
+		}
+		.box>div:first-child{
+			border-bottom-right-radius: 100%;
+			top: 0;
+			left: 0;
+		}
+		.box>div:last-child{
+			border-top-left-radius: 100%;
+			right: 0;
+			bottom: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="box">
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+</body>
+</html>
