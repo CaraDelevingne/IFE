@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>三栏式布局</title>
+		<style type="text/css">
+		*{
+			margin: 0 auto;
+			padding: 0;
+			list-style-type: none;
+		}
+		.box{
+			border: thin solid #999;
+			margin-top: 20px;
+			width: 90%;
+		}
+		.items{
+			background: #eee;
+		}
+		.items::after{
+			content: "";
+			display: block;
+			clear: left;
+		}
+		.items>li{
+			float: left;
+			background: #fff;
+			border: thin solid #999;
+			margin: 20px 0 20px 20px;
+		}
+		.items>li:first-child{
+			margin-right: 0;
+			width: 200px;
+			padding: 0;
+		}
+		.items>li:first-child::after{
+			content: "";
+			display: inline;
+			clear: both;
+		}
+		.items>li:first-child>div{
+			width: 80px;
+			height: 80px;
+			border: thin solid #999;
+			background: #eee;
+			margin: 20px;
+			float: left;
+		}
+		.items>li:first-child>p{
+			float: left;
+			margin-top: 20px;
+			font-weight: bold;
+		}
+		.items>li:nth-child(2){
+			width: 74%;
+			padding: 20px;
+		}
+		.member{
+			width: 120px;
+		}
+		.member>li{
+			width: 80px;
+			height: 80px;
+			border: thin solid #999;
+			background: #eee;
+			margin: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul class="items">
+			<li>
+				<div></div>
+				<p>团队名称</p>
+			</li>
+			<li>
+				水电费噶的高发噶地方尴尬三国杀
+				撒旦法人为干扰而过
+				<p>胜多负少嘎日嘎儿个嘎鹅肝额噶啥地方
+					sdafagaregaegctfvygbhunijmko,l.;
+				</p>
+			</li>
+			<li>
+				<ol class="member">
+					<li>
+						<h4>个人logo</h4>
+						<p>80*80</p>
+					</li>
+					<li>
+						<h4>个人logo</h4>
+						<p>80*80</p>
+					</li>
+					<li>
+						<h4>个人logo</h4>
+						<p>80*80</p>
+					</li>
+					<li>
+						<h4>个人logo</h4>
+						<p>80*80</p>
+					</li>
+				</ol>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
