@@ -1,0 +1,159 @@
+*{
+	margin: 0 auto;
+	padding: 0;
+	list-style-type: none;
+	font-family: "Microsoft YaHei";
+}
+::selection{
+	background: transparent;
+}
+::moz-selection{
+	background: transparent;
+}
+.fixed{
+	display: block;
+	min-height: 1%;
+}
+.fixed:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+/*header*/
+header{
+	width: 100%;
+	height: 80px;
+	background: rgba(0,0,0,0.8);
+}
+nav{
+	height: inherit;
+	margin: 0 20px;
+}
+nav>img{
+	width: 80px;
+	height: 40px;
+	float: left;
+	margin-top: 20px;
+}
+nav>ul{
+	float: right;
+	margin-top: 20px;
+	height: 80px;
+}
+nav>ul>li{
+	float: left;
+	margin-left: 10px;
+	line-height: 40px;
+}
+nav>ul>li>a{
+	color: #fff;
+	text-decoration: none;
+}
+nav>ul>li>a:hover{
+	color: yellow;
+}
+/*left*/
+/*通用部分*/
+.left{
+	width: 70%;
+	margin: 20px 0 0px 20px;
+	float: left;
+}
+.text-part{
+	width: 100%;
+	border: 2px solid #999;
+	box-shadow: 0 5px 5px #888888;
+	margin-top: 20px;
+}
+.text-part>h2{
+	margin: 20px;
+}
+.text-part>h3{
+	color: #999;
+	margin: 20px;
+}
+.text-part>div{
+	color: #999;
+	margin: 20px;
+}
+.text-part>p{
+	text-indent: 2em;
+	padding: 20px;
+}
+.text-part>img{
+	width: 300px;
+	height: 250px;
+	margin: 20px;
+}
+/*第二部分*/
+.text-list{
+	margin:0 0 20px 20px;
+}
+/*第三部分*/
+.image-list{
+	width:540px;
+	margin:30px 0 20px 10px;
+}
+.image-list>li{
+	float: left;
+	margin:0 0 10px 10px;
+	border: thin solid #999;
+	text-align: center;
+}
+.image-list>li>img{
+	width: 100px;
+	height: 80px;
+	margin: 10px;
+}
+/*第四部分*/
+.order{
+	margin-left: 20px;
+}
+.last-part>h5{
+	margin: 10px 0;
+	font-size: 16px;
+}
+.last-part>table{
+	width: 100%;
+}
+.last-part>table tr:first-child{
+	background: #333;
+	color: #fff;
+}
+.last-part>table tr:last-child{
+	background: #999
+}
+/*right*/
+.right{
+	float: right;
+	width: 360px;
+	box-shadow: 0px 2px 3px #888888;
+	margin:20px 20px 0 0;
+}
+.right>h3{
+	margin: 20px;
+	border-left: 3px solid #999;
+	padding:10px 20px;
+}
+.right>table tr{
+	height: 45px;
+}
+.right>table label{
+	cursor: pointer;
+}
+.tip{
+	color: #999;
+	text-indent: 6em;
+	font-size: 15px;
+}
+.person{
+	vertical-align: top;
+}
+.submit{
+	width: 100%;
+	height: 30px;
+	border-radius: 3px;
+	background: deepskyblue;
+	border: none;
+	color: #fff;
+}
