@@ -9,4 +9,4 @@
 实践并掌握CSS的颜色、字体、背景、边框、盒模型、简单布局等样式的定义方式
 
 
-#### DEMO : http://htmlpreview.github.com/?https://github.com/CaraDelevingne/IFE/edit/master/HTML与CSS(一)/任务五:HTML与CSS.html
+#### DEMO : http://htmlpreview.github.io/?https://github.com/CaraDelevingne/IFE/edit/master/HTML与CSS(一)/任务五:HTML与CSS.html
