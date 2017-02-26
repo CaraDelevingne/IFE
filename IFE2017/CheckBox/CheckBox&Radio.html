@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>IFE:任务一 checkbox And Radio</title>
+	<style>
+		*{
+			margin: 0 auto;
+			padding: 0;
+		}
+		label{
+			width: 20px;
+			height: 20px;
+			display: inline-block;
+			border-radius: 50%;
+			background: url("check.png") no-repeat;
+			cursor: pointer;
+		}
+		.check label{
+			background-position:  1px -22px;
+		}
+		.radio>label{
+			background-position:  0px 0;
+		}
+		input{
+			display: none;
+		}
+		.check>input:checked+label{
+			background-position: -35px -22px;
+			-webkit-transition: all 0.3s linear;
+			-moz-transition: all 0.3s linear;
+			-ms-transition: all 0.3s linear;
+			transition: all 0.3s linear;
+		}
+		.radio>input:checked+label{
+			background-position: -35px 1px;
+			-webkit-transition: all 0.3s linear;
+			-moz-transition: all 0.3s linear;
+			-ms-transition: all 0.3s linear;
+			transition: all 0.3s linear;
+		}
+	</style>
+</head>
+<body>
+	<div class="check">
+		<input type="checkbox" id="checkbox">
+		<label for="checkbox"></label>
+	</div>
+	<div class="radio">
+		<input type="radio" id="radiobox1" name="sex">
+		<label for="radiobox1"></label>
+		<input type="radio" id="radiobox" name="sex">
+		<label for="radiobox"></label>
+	</div>
+</body>
+</html>
