@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>有趣的CSS动画</title>
+	<style>
+		*{
+			margin: 0 auto;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		::before,::after{
+			box-sizing: border-box;
+		}
+		.container{
+			width: 60%;
+			min-width: 300px;
+			display: flex;
+			position: relative;
+		}
+		.container>img{
+			width: 100%;
+			height: 100%;
+		}
+		.container>figcaption{
+			width: 100%;
+			height: 100%;
+			padding: 20px;
+			position: absolute;
+		}
+		.title{
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			align-content: center;
+			justify-content: center;
+			opacity: 0;
+			-webkit-box-shadow: 0px 0px 20px 30px rgba(0,0,0,0.46);
+			-moz-box-shadow: 0px 0px 20px 30px rgba(0,0,0,0.46);
+			box-shadow: 0px 0px 20px 30px rgba(0,0,0,0.46);
+			text-shadow: 1px 1px 2px rgba(0,0,0,0.26);
+			position: relative;
+			color: #fff;
+			-webkit-transition: opacity 0.5s;
+			-o-transition: opacity 0.5s;
+			-moz-transition: opacity 0.5s;
+			transition: opacity 0.5s;
+		}
+		.title::before{
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 50%;
+			width: 100%;
+			height: 0;
+			border: 3px solid #fff;
+			border-width: 0 3px;
+			visibility: hidden;
+			-webkit-transition: all 0.5s;
+			-moz-transition: all 0.5s;
+			-o-transition: all 0.5s;
+			transition: all 0.5s;
+		}
+		.title::after{
+			content: "";
+			position: absolute;
+			left: 50%;
+			top: 0;
+			width: 0;
+			height: 100%;
+			border: 3px solid #fff;
+			border-width: 3px 0;
+			visibility: hidden;
+			-webkit-transition: all 0.5s;
+			-moz-transition: all 0.5s;
+			-o-transition: all 0.5s;
+			transition: all 0.5s;
+		}
+		.sideIn{
+			opacity: 0;
+			transition: opacity 0.5s ,transform 0.5s;
+		}
+		.container:hover .sideIn{
+			opacity: 1;
+		}
+		.container:hover .title {
+    		opacity: 1;
+    		background:-webkit-linear-gradient(120.972deg, rgba(255, 255, 255, 0.294118) 0%, rgba(255, 255, 255, 0) 80%);
+		}
+		.container:hover .title::before{
+			height: 100%;
+			visibility: visible;
+			top: 0;
+		}
+		.container:hover .title::after{
+			width: 100%;
+			visibility: visible;
+			left: 0;
+		}
+		.text{
+			background: -webkit-linear-gradient(left,green,yellow 30%,deepskyblue 50%,red 70%,pink 80%,yellow 90%,green 100%);
+			color: transparent;
+			/*背景绘制区域定为文本区域*/
+			-webkit-background-clip: text;
+			-o-background-clip: text;
+			-moz-background-clip: text;
+			background-clip: text;
+			background-size: 200%;
+			-webkit-animation: text 5s infinite linear;
+			-moz-animation: text 5s infinite linear;
+			-o-animation: text 5s infinite linear;
+			animation: text 5s infinite linear;
+		}
+		@keyframes text{
+			0%{
+				background-position: 0 0;
+			}
+			100%{
+				background-position: -100% 0;
+			}
+		}
+		.link{
+			color: skyblue;
+			-webkit-animation: anima 5s infinite linear;
+			-moz-animation: anima 5s infinite linear;
+			-o-animation: anima 5s infinite linear;
+			animation: anima 5s infinite linear;
+		}
+		@keyframes anima{
+			0%{
+				color: pink;
+			}
+			40%{
+				color: blue;
+			}
+			60%{
+				color: yellow;
+			}
+			80%{
+				color: deepskyblue;
+			}
+			100%{
+				color: pink;
+			}
+		}
+	</style>
+</head>
+<body>
+	<figure class="container">
+		<figcaption>
+			<div class="title">
+				<h1 class="text sideIn">Hello World!</h1>
+				<a class="link sideIn" href="#">点击进入</a>
+			</div>
+		</figcaption>
+		<img src="http://i1.piimg.com/567571/580e353a8a2dc677.jpg" alt="pic">
+	</figure>	
+</body>
+</html>
