@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义右键菜单</title>
+	<style type="text/css">
+		body,html{
+			margin: 0 auto;
+			padding: 0;
+			list-style-type: none;
+			height: 100%;
+		}
+		.box{
+			width: 100%;
+			height: 100%;
+		}
+		.box>div{
+			background: #ccc;
+			border: thin solid #777777;
+			font-size: 16px;
+			width: 400px;
+			height: 80px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 5px;
+		}
+		ul{
+			width: 200px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			background: skyblue;
+			border: thin solid black;
+			position: absolute;
+		}
+		ul>li{
+			width: 100%;
+			height: 30px;
+			text-align: center;
+			color: #fff;
+			line-height: 30px;
+		}
+		ul>li:not(:last-child){
+			border-bottom: thin solid #ccc;
+		}
+	</style>
+</head>
+<body>
+<div class="box" @click="hidden($event)">
+	<div @contextmenu.stop.prevent="getMenu($event)">
+		click me to see the right menu
+		<ul v-show="showMenu" :style="{left:theLeft+'px',top:theTop+'px'}">
+			<li v-for="item in menuList" @click="titleHtml(item)">{{item}}</li>
+		</ul>
+	</div>
+</div>
+	<script src="js/vue.js"></script>
+	<script>
+		new Vue({
+			el:".box",
+			data:{
+				menuList:["Menu1","Menu2","Menu3"],
+				//控制菜单显示隐藏
+				showMenu:false,
+				//储存菜单位置
+				theTop:"",
+				theLeft:""
+			},
+			methods:{
+				getMenu (e) {
+					//获取当前指针坐标
+					let x = e.clientX;
+					let y = e.clientY;
+					//获取当前目标
+					let target = e.target;
+					//获取屏幕宽高
+					let WinW = document.body.clientWidth || document.documentElement.clientWidth;
+					let WinH =  document.documentElement.clientHeight;
+					//判断右侧宽度是否足够
+					if ((WinW - x) < 200 ) {
+						this.theTop = y ;
+						this.theLeft = (x - 200);
+					//判断下方高度是否足够
+					}else if ((WinH - y) < 80) {
+						this.theTop = (y - 80);
+						this.theLeft = x ;
+					}else{
+						this.theTop = y ;
+						this.theLeft = x ;	
+					}
+					this.showMenu = true;
+				},
+				titleHtml (item) {
+					//显示点击的元素内容
+					alert(item);
+				},
+				//隐藏菜单
+				hidden: function (e) {
+					let x = e.clientX;
+					let y = e.clientY;
+					let target = e.target;
+					if (x > (target.offsetLeft + 400) || x < target.offsetLeft || y > (target.offsetTop + 80) ) {
+						this.showMenu = false;
+					}
+				}
+			}
+		});
+	</script>
+</body>
+</html>
