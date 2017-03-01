@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- Created 2017.3.1 By Cara -->
+	<title>CSS实现折叠面板</title>
+	<style type="text/css">
+		*{
+			margin: 0 auto;
+			padding: 0;
+			list-style-type: none;
+			text-decoration: none;
+		}
+		.panel{
+			width: 200px;
+			background: #ccc;
+			border: thin solid #777777;
+			border-radius: 3px;
+			text-align: center;
+		}
+		.panel-title{
+			width: 100%;
+			height: 40px;
+			line-height: 40px;
+			color: #333;
+			display: inline-block;
+		}
+		.panel>ul{
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			background: #fff;
+		}
+		.panel-menu>li{
+			width: 100%;
+			text-align: center;
+			line-height: 30px;
+		}
+		.panel>ul>li:not(:last-child){
+			border-bottom: thin solid #ccc;
+		}
+		.panel .panel-menu:not(:target)>li{
+			height: 0;
+			visibility: hidden;
+		}
+		.panel .panel-menu:target>li{
+			height: 30px;
+			visibility: visible;
+			-webkit-transition: all .3s linear;
+			-moz-transition: all .3s linear;
+			-ms-transition: all .3s linear;
+			transition: all .3s linear;
+		}
+	</style>
+</head>
+<body>
+	<div class="panel">
+		<a href="#menu1" class="panel-title">
+			menu1
+		</a>
+		<ul class="panel-menu" id="menu1">
+			<li>123</li>
+			<li>123</li>
+		</ul>
+	</div>
+	<div class="panel">
+		<a href="#menu2" class="panel-title">
+			menu2
+		</a>
+		<ul class="panel-menu" id="menu2">
+			<li>234</li>
+			<li>234</li>
+		</ul>
+	</div>
+	<div class="panel">
+		<a href="#menu3" class="panel-title">
+			menu3
+		</a>
+		<ul class="panel-menu" id="menu3">
+			<li>345</li>
+			<li>345</li>
+		</ul>
+	</div>
+	<script>
+		//清除hash
+		document.addEventListener('DOMContentLoaded',function () {
+			if (window.location.hash != "") {
+				window.location.hash = "";
+			}
+		})
+	</script>
+</body>
+</html>
