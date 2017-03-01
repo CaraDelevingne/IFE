@@ -36,21 +36,18 @@
 			width: 100%;
 			text-align: center;
 			line-height: 30px;
-		}
-		.panel>ul>li:not(:last-child){
-			border-bottom: thin solid #ccc;
-		}
-		.panel .panel-menu:not(:target)>li{
+			overflow: hidden;
 			height: 0;
-			visibility: hidden;
-		}
-		.panel .panel-menu:target>li{
-			height: 30px;
-			visibility: visible;
 			-webkit-transition: all .3s linear;
 			-moz-transition: all .3s linear;
 			-ms-transition: all .3s linear;
 			transition: all .3s linear;
+		}
+		.panel>ul>li:not(:last-child){
+			border-bottom: thin solid #ccc;
+		}
+		.panel .panel-menu:target>li{
+			height: 30px;
 		}
 	</style>
 </head>
