@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>collapsible-component</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        input[type="radio"]{
+            display: none;
+        }
+        .collapsible-content{
+            border-radius: 4px;
+            background-color: #fff;
+            border:1px solid #ddd;
+            color: #333;
+            font-size: 14px;
+        }
+        .collapsible-content>p{
+            height: 0;
+            overflow: hidden;
+            border-top:0;
+            -webkit-transition: all .3s linear;
+            -moz-transition: all .3s linear;
+            -ms-transition: all .3s linear;
+            transition: all .3s linear;
+        }
+        .collapsible-radio-label,.collapsible-radio-label-hide{
+            color: #333;
+            background-color: #f5f5f5;
+            border:1px solid #ddd;
+            border-radius: 4px;
+            padding: 8px;
+            display: block;
+            cursor: pointer;
+        }
+        .collapsible-radio-label-hide{
+            display: none;
+        }
+        .collapsible-radio:checked~.collapsible-content>p{
+            height: 30px;
+        }
+        .collapsible-radio:checked~.collapsible-radio-label{
+            display: none;
+        }
+        .collapsible-radio:checked~.collapsible-radio-label-hide{
+            display: block;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="content">
+    <input type="radio" name="collapsible" id="collapsible1" class="collapsible-radio" >
+    <input type="radio" name="collapsible" id="collapsible-hide" class="collapsible-radio-hide" >
+    <label for="collapsible1" class="collapsible-radio-label">我是collapsible1</label>
+    <label for="collapsible-hide" class="collapsible-radio-label-hide">我是collapsible1</label>
+    <div class="collapsible-content">
+        <p>hhhhhhh</p>
+        <p>hhhhhhh</p>
+        <p>hhhhhhh</p>
+        <p>hhhhhhh</p>
+    </div>
+    </div>
+<br/>
+    <div class="content">
+        <input type="radio" name="collapsible" id="collapsible2" class="collapsible-radio" >
+        <input type="radio" name="collapsible" id="collapsible-hide2" class="collapsible-radio-hide" >
+        <label for="collapsible2" class="collapsible-radio-label">我是collapsible2</label>
+        <label for="collapsible-hide2" class="collapsible-radio-label-hide">我是collapsible2</label>
+        <div class="collapsible-content">
+            <p>1111111111111111</p>
+            <p>1111111111111111</p>
+            <p>1111111111111111</p>
+            <p>1111111111111111</p>
+        </div>
+    </div>
+    <br/>
+    <div class="content">
+        <input type="radio" name="collapsible" id="collapsible3" class="collapsible-radio" >
+        <input type="radio" name="collapsible" id="collapsible-hide3" class="collapsible-radio-hide" >
+        <label for="collapsible3" class="collapsible-radio-label">我是collapsible3</label>
+        <label for="collapsible-hide3" class="collapsible-radio-label-hide">我是collapsible3</label>
+        <div class="collapsible-content">
+            <p>2222222222222222</p>
+            <p>2222222222222222</p>
+            <p>2222222222222222</p>
+            <p>2222222222222222</p>
+        </div>
+    </div>
+    <br/>
+</div>
+</body>
+</html>

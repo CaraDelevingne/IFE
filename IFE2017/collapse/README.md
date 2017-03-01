@@ -37,3 +37,5 @@ Created 2017.2.27 By Cara
 最后为了刷新清楚hash值 用了js判断是否hash值为空
 
 ### demo地址 : https://caradelevingne.github.io/IFE/IFE2017/collapse/index.html
+
+### demo优化地址 : https://caradelevingne.github.io/IFE/IFE2017/collapse/better.html
