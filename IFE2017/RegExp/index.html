@@ -28,7 +28,7 @@
     }
     document.write("验证简单重复字符串 在console看");
     function test (str) {
-        // \b 边界符:匹配字母中文数字下划线; \1 重复一次 ; + 重复一次
+        // \b 边界符:匹配字母中文数字下划线; \1 重复一次 ; + 至少一次
         let repeat = /\b([A-Za-z]+)\s+\1\b/;
         console.log(repeat.test(str));
     }
