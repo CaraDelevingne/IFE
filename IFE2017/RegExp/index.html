@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式入门(验证手机号码及判断相邻重复)</title>
+</head>
+<body>
+<input type="text" name="tel" id="tel">
+<input type="button" value="click me" id="btn">
+<input type="button" value="test repeat" id="repeat">
+<script>
+    //判断手机
+    var tel = document.getElementById("tel");
+    var btn  = document.getElementById("btn");
+    let testTel = tel.value;
+    btn.onclick = function () {
+        
+        let condition = /^1[34589]\d{9}$/
+        if (condition.test(testTel)) {
+        	alert(true) 
+        }else {
+        	alert(false);
+        }
+    }
+    
+    tel.onfocus = function () {
+    	this.value = "";
+    }
+    document.write("验证简单重复字符串 在console看");
+    function test (str) {
+        // \b 边界符:匹配字母中文数字下划线; \1 重复一次 ; + 重复一次
+        let repeat = /\b([A-Za-z]+)\s+\1\b/;
+        console.log(repeat.test(str));
+    }
+    test("foo foo bar");
+    test("foo bar foo");
+    test("foo  barbar bar");
+</script>
+</body>
+</html>
