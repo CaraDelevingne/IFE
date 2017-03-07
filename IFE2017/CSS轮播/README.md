@@ -2,6 +2,67 @@
     Created By Cara on 7/3/17
 
 ## 思路及问题
+
+###任务轮播
+用一个div.box包裹6张图片并声明3D,父级.wrapper用 perspective:800px 声明视距;perspective-origin:center以中心点旋转,之后控制这个.box的rotateY来旋转
+关键代码:
+    css代码:
+        ``` css
+            .box{
+		        width: 200px;
+		        height: 200px;
+		        -webkit-transform-style: preserve-3d;
+		        transform-style: preserve-3d;
+		        transition: all 0.5s linear;
+		        position: relative;
+		        padding: 200px;
+	        }
+	        .box>div{
+		        position: absolute;
+		        width: 200px;
+		        height: 200px;
+	        }
+	        .box>div>img{
+		        width: 100%;
+		        height: 100%;
+	        }
+	        .img1{
+		        transform: rotateY(0deg) translateZ(400px);
+	        }
+	        .img2{
+		        transform: rotateY(65deg) translateZ(400px);
+	        }
+	        .img3{
+		        transform: rotateY(125deg) translateZ(400px);
+	        }
+	        .img4{
+		        transform: rotateY(180deg) translateZ(400px);
+	        }
+	        .img5{
+		        transform: rotateY(245deg) translateZ(400px);
+	        }
+	        .img6{
+		        transform: rotateY(305deg) translateZ(400px);
+	        }
+        ```
+    js代码:
+        ```
+            let num = 0, clearTime = null;
+            let move =  () => {
+		        box.css({transform:'rotateY('+ num * 45 +'deg)'});
+	        }
+	        //自动轮播
+	        let autoMove = () => {
+		        clearInterval(clearTime);
+		        clearTime = setInterval(() => {
+			        num++;
+			        move();
+		        },2000);
+	        }
+	        autoMove();
+        ```
+
+### 这是另一个3D轮播
  每个li代表四个格子,分割图片background-position;rotateX来旋转图片呈现上下前后四个面,下面再分四个div代表四张图片;比如第一个div对应所有li的下面的第一个div也就是一张完整的图片;
 关键代码:
 ```css
@@ -63,5 +124,7 @@
 	    },2000);
 	}
 ```
+
+### 任务DEMO地址 : https://caradelevingne.github.io/IFE/IFE2017/CSS轮播/index1.html
 
 ### DEMO地址 : https://caradelevingne.github.io/IFE/IFE2017/CSS轮播/index.html
