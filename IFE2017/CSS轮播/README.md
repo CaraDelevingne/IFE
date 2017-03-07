@@ -2,7 +2,7 @@
     Created By Cara on 7/3/17
 
 ## 思路及问题
- 每个li代表四个面,代表上下前后4个面,下面再分四个div,分别对应li的第 1 2 3 4个;比如第一个div对应所有li的下面的第一个div;
+ 每个li代表四个格子,分割图片background-position;rotateX来旋转图片呈现上下前后四个面,下面再分四个div代表四张图片;比如第一个div对应所有li的下面的第一个div也就是一张完整的图片;
 关键代码:
 ```css
         .image{
