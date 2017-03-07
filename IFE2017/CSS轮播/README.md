@@ -125,6 +125,6 @@
 	}
 ```
 
-### 任务DEMO地址 : https://caradelevingne.github.io/IFE/IFE2017/CSS轮播/index1.html
+### 任务DEMO地址 : https://caradelevingne.github.io/IFE/IFE2017/CSS轮播/Index1.html
 
 ### DEMO地址 : https://caradelevingne.github.io/IFE/IFE2017/CSS轮播/index.html
