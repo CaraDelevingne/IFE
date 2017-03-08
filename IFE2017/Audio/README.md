@@ -6,6 +6,7 @@
     用class作为对象的模板,让对象原型的写法更清晰.
     首先初始化所有的需要用到的变量,将函数分类
 
+    未完...
 
 
 ### DEMO地址 : https://caradelevingne.github.io/IFE/IFE2017/Audio/index.html
