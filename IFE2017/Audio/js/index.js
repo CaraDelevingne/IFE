@@ -28,6 +28,10 @@ class DouBanFm {
 		this.$pause.addEventListener('click', this.pause.bind(this));
 		this.$prev.addEventListener('click', this.prev.bind(this));
 		this.$next.addEventListener('click', this.next.bind(this));
+		this.volume.addEventListener('click', this.setVolume.bind(this));
+		this.progress.addEventListener('click', this.setProgress.bind(this));
+		this.audio.addEventListener('timeupdate', this.updataProgress.bind(this));
+		this.audio.addEventListener('ended', this.next.bind(this));
 		this.loadAndPlay(0)
 	}
 	//读取数据
@@ -72,6 +76,32 @@ class DouBanFm {
 		}else{
 			this.loadAndPlay(this.musicListIndex + 1)
 		}
+	}
+	//设置音量
+	setVolume (e) {
+		//获得矩形对象:
+		const rect = this.volume.getBoundingClientRect();
+		//鼠标位置 - 左偏移量 / 元素宽度 ;算出选了占整个音量条的百分比
+		const volume = (e.x - rect.left) / rect.width;
+		this.volumeValue.style.width = volume * 100 + '%';
+		this.audio.volume = volume;
+	}
+	//设置进度条
+	setProgress (e) {
+		this.audio.currentTime = e.offsetX / this.progress.clientWidth * this.audio.duration;
+	}
+	//更新当前播放时间
+	updataProgress () {
+		//let time = parseInt(this.audio.duration - this.audio.cuerrentTime);
+		let minute = parseInt(this.audio.currentTime / 60);
+		let second = parseInt((this.audio.currentTime - minute) % 60);
+		if (second < 10 ) {
+			second = '0' + second;
+		}if (minute < 10) {
+			minute = '0' + minute;
+		}
+		this.time.textContent = `${minute}:${second}`;
+		this.progressValue.style.width = (this.audio.currentTime / this.audio.duration * 100) +'%';
 	}
 }
 
