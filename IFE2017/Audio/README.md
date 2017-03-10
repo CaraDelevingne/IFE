@@ -78,6 +78,7 @@
 		this.time.textContent = `${minute}:${second}`;
 		this.progressValue.style.width = (this.audio.currentTime / this.audio.duration * 100) +'%';
 	}
+```
 
 #### analyser.js 可视化音频流 函数说明
     
