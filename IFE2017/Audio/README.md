@@ -5,6 +5,9 @@
     html跟着模仿就行,重点在js,用一个index当做音乐播放列表的下标,分别给标题/作者/音频src/图片赋值;
     用class作为对象的模板,让对象原型的写法更清晰.
     首先初始化所有的需要用到的变量,将函数分类
+    MDN了解Audio可视化音频接口
+    requestAnimationFrame()执行动画,类似setInterval
+    音乐文件跨域问题
 
 #### index.js 函数说明
 
