@@ -6,8 +6,9 @@
     用class作为对象的模板,让对象原型的写法更清晰.
     首先初始化所有的需要用到的变量,将函数分类
 
-1.index.js 函数说明
-    |函数名 | 参数 | 说明 |
+#### index.js 函数说明
+
+    | 函数名 | 参数 | 说明 |
     |:------:||:------:||:------:|
     | DouBanFm | \ | 播放器类 |
     | constructor | \ | 构造函数: 初始化要用的变量 |
@@ -20,7 +21,7 @@
     | setProgress | e | 设置进度条,参数event对象,用于获取当前鼠标位置计算当前播放时间 |
     | updataProgress | \ | 更新播放时间并更新进度条 |
 
-最后需要实例化 var Fm  = new DouBanFm();
+    最后需要实例化 var Fm  = new DouBanFm();
 
 ``` 关键代码
     //所有事件处理
@@ -78,7 +79,7 @@
 		this.progressValue.style.width = (this.audio.currentTime / this.audio.duration * 100) +'%';
 	}
 
-2.analyser.js 可视化音频流 函数说明
+#### analyser.js 可视化音频流 函数说明
     
     |函数名 | 参数 | 说明 |
     |:------:||:------:||:------:|
