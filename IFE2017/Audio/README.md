@@ -8,18 +8,18 @@
 
 #### index.js 函数说明
 
-    | 函数名 | 参数 | 说明 |
-    | :------: | :------: | :------: |
-    | DouBanFm | X | 播放器类 |
-    | constructor | X | 构造函数: 初始化要用的变量 |
-    | handler | X | 所有事件处理程序 |
-    | loadAndPlay | index | 读取音乐文件,index作为音乐文件的索引值 |
-    | load | X | 获取音乐详情并赋值对应的初始化变量:音乐名称/作者/专辑图片/音乐路径 |
-    | play/pause | X | 播放音乐,以及暂停/播放键的切换 | 
-    | prev/next | X | 上一曲/下一曲,并判断当前歌曲是否为最后一曲或者第一曲 |
-    | setVolume | e | 设置音量大小,参数event对象,用于获取当前鼠标点击的位置计算音量百分比 | 
-    | setProgress | e | 设置进度条,参数event对象,用于获取当前鼠标位置计算当前播放时间 |
-    | updataProgress | X | 更新播放时间并更新进度条 |
+| 函数名 | 参数 | 说明 |
+| :------: | :------: | :------: |
+| DouBanFm | X | 播放器类 |
+| constructor | X | 构造函数: 初始化要用的变量 |
+| handler | X | 所有事件处理程序 |
+| loadAndPlay | index | 读取音乐文件,index作为音乐文件的索引值 |
+| load | X | 获取音乐详情并赋值对应的初始化变量:音乐名称/作者/专辑图片/音乐路径 |
+| play/pause | X | 播放音乐,以及暂停/播放键的切换 | 
+| prev/next | X | 上一曲/下一曲,并判断当前歌曲是否为最后一曲或者第一曲 |
+| setVolume | e | 设置音量大小,参数event对象,用于获取当前鼠标点击的位置计算音量百分比 | 
+| setProgress | e | 设置进度条,参数event对象,用于获取当前鼠标位置计算当前播放时间 |
+| updataProgress | X | 更新播放时间并更新进度条 |
 
     最后需要实例化 var Fm  = new DouBanFm();
 
@@ -82,11 +82,11 @@
 
 #### analyser.js 可视化音频流 函数说明
     
-    | 函数名 | 参数 | 说明 |
-    | :------: | :------: | :------: |
-    | Analyser | X | 整个音频可视化类 |
-    | constructor | element/audio | 构造函数: 初始化要用的变量,参数element传入canvas对象/audio传入new Audio("xxx.mp3") |
-    | draw | X | 在canvas中画动画音频 |
+| 函数名 | 参数 | 说明 |
+| :------: | :------: | :------: |
+| Analyser | X | 整个音频可视化类 |
+| constructor | element/audio | 构造函数: 初始化要用的变量,参数element传入canvas对象/audio传入new Audio("xxx.mp3") |
+| draw | X | 在canvas中画动画音频 |
 
 注意 : 最后在index.js中实例化该类并在constructor中调用.由于这里用的不是本地音乐所以有跨域的问题,会导致获取不到音频播放器也不会播放.
        所以歌曲都用的别人做好的,服务端做过处理.
