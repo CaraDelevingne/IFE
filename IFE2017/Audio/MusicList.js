@@ -1,7 +1,8 @@
 ﻿const musicList=[
     {
         "name": "Something Just Like This",
-        "src": "http://m2.music.126.net/VGVtmHpkWLkEdAKUz2U0Qw==/18667508418127853.mp3",
+        "src": "http:\/\/m2.music.126.net\/VGVtmHpkWLkEdAKUz2U0Qw==\/18667508418127853.mp3",
+        //"src": "http:\/\/mr1.doubanio.com\/d087a35554d58d9dc04485c9b92d423f\/0\/fm\/song\/p749701_128k.mp3",
         "author": "The Chainsmokers&Coldplay",
         "cover": "http://p4.music.126.net/ggnyubDdMxrhpqYvpZbhEQ==/3302932937412681.jpg"
     },
@@ -13,7 +14,7 @@
     },
     {
         "name": "Closer",
-        "src": "http://m2.music.126.net/m5iPL5Chq02CW7DcaL103w==/3394192425656173.mp3",
+        "src": "http:\/\m2.music.126.net/m5iPL5Chq02CW7DcaL103w==/\3394192425656173.mp3",
         "author": "The Chainsmokers&Halsey",
         "cover": "http://p3.music.126.net/nC7UtVKkQNmfb8oPG1qQFw==/3310629516306722.jpg"
     },

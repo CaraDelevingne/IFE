@@ -10,11 +10,13 @@
 			font: 16px "Mircosoft YaHei";
 		}
 		html,body{
+			width: 100%;
 			height: 100%;
 			background:#FAFAFA;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
+			justify-content: space-around;;
 		}
 		.wrapper{
 			width: 60%;
@@ -181,8 +183,10 @@
 			<img src="http://p4.music.126.net/ggnyubDdMxrhpqYvpZbhEQ==/3302932937412681.jpg" alt="image">
 		</div>
 	</div>
-	<canvas id="analyser" width="100%" height="260px"></canvas>
-	<script src="MusicList.js"></script>
+	<canvas class="analyser" width="100%" height="260px"></canvas>
+	<!-- <script src="MusicList.js"></script> -->
+	<script src="playlist.js"></script>
+	<script src="js/analyser.js"></script>
 	<script src="js/index.js"></script>
 </body>
 </html>

@@ -2,8 +2,9 @@
 
 
 class DouBanFm {
+	//初始化所有需要的变量
 	constructor() {
-		this.musicList = musicList;
+		this.musicList = playlist;
 		this.title = document.querySelector(".title");
 		this.author = document.querySelector(".author");
 		this.time = document.querySelector(".time");
@@ -17,12 +18,13 @@ class DouBanFm {
 		this.$pause = document.querySelector(".icon-pause");
 		this.cover = document.querySelector(".cover>img");
 		this.audio = new Audio();
+		this.visualizer = new Analyser(".analyser",this.audio);
 		this.musicListIndex = 0;
 		this.handler();
 		
 	}
 
-
+	//所有事件处理
 	handler () {
 		this.$play.addEventListener('click', this.play.bind(this));
 		this.$pause.addEventListener('click', this.pause.bind(this));
@@ -30,8 +32,8 @@ class DouBanFm {
 		this.$next.addEventListener('click', this.next.bind(this));
 		this.volume.addEventListener('click', this.setVolume.bind(this));
 		this.progress.addEventListener('click', this.setProgress.bind(this));
-		this.audio.addEventListener('timeupdate', this.updataProgress.bind(this));
 		this.audio.addEventListener('ended', this.next.bind(this));
+		this.audio.addEventListener('timeupdate', this.updataProgress.bind(this));
 		this.loadAndPlay(0)
 	}
 	//读取数据
@@ -43,11 +45,11 @@ class DouBanFm {
 	}
 	//获取数据并复赋值
 	load () {
-		this.title.textContent = this.song.name;
-		this.author.textContent = this.song.author;
-		this.cover.src = this.song.cover;
-		this.audio.src = this.song.src;
-		document.title = this.song.name;
+		this.title.textContent = this.song.title;
+		this.author.textContent = this.song.artist;
+		this.cover.src = this.song.picture;
+		this.audio.src = this.song.url;
+		document.title = this.song.title;
 	}
 	//play
 	play () {
@@ -88,11 +90,11 @@ class DouBanFm {
 	}
 	//设置进度条
 	setProgress (e) {
+		//当前时间
 		this.audio.currentTime = e.offsetX / this.progress.clientWidth * this.audio.duration;
 	}
 	//更新当前播放时间
 	updataProgress () {
-		//let time = parseInt(this.audio.duration - this.audio.cuerrentTime);
 		let minute = parseInt(this.audio.currentTime / 60);
 		let second = parseInt((this.audio.currentTime - minute) % 60);
 		if (second < 10 ) {
@@ -105,4 +107,7 @@ class DouBanFm {
 	}
 }
 
-var Fm  = new DouBanFm()
+//实例化
+var Fm  = new DouBanFm();
+
+
