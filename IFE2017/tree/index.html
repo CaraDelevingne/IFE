@@ -72,18 +72,17 @@
 				this.getnode();
 				this.handler();
 			}
-
+			//取数据
 			getnode () {
-				let _this = this;
 				this.node.forEach(function (item,index){
 					this.parentTitle[index].textContent = item.name;
 					if (item.children) {
 						item.children.forEach(function (items,index) {
 						this.arr.push(items.name);		
 							if (items.grachildren) {
-									items.grachildren.forEach(function (item) {
-										this.graArr.push(item.name)
-									}.bind(this))
+								items.grachildren.forEach(function (item) {
+									this.graArr.push(item.name)
+								}.bind(this))
 							}
 						}.bind(this));
 					}
@@ -96,7 +95,7 @@
 					this.graname[i].textContent = this.graArr[i];
 				}
 			}
-
+			//处理事件
 			handler () {
 				let _this = this;
 				for (let i = this.isShow.length -1 ;i-- ;) {
@@ -106,7 +105,7 @@
 				}
 				
 			}
-
+			//符号改变及dom显示隐藏
 			show (e) {
 				let _this = this;
 				let currentStyle = e.target.nextElementSibling;
