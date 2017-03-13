@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tree</title>
+	<style type="text/css">
+		*{
+			margin: 0 auto;
+			list-style-type: none;
+		}
+		::selection{
+			background: transparent;
+		}
+		.wrapper{
+			width: 50%;
+		}
+		.node{
+			cursor: pointer;
+
+		}
+		.node+ol {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<h2>tree</h2>
+		<ul >
+			<li>
+				<div class="parentTitle node"><span class="arrow"></span>qwe</div>
+				<ol>
+					<li class="name">qwe</li>
+					<li class="name">qwe</li>
+					<li class="name">qwe</li>
+					<li class="name">qwe</li>
+				</ol>
+			</li>
+			<li class="">
+				<div class="parentTitle node"><span class="arrow"></span>qwe</div>
+				<ol>
+					<li class="name">qwe</li>
+					<li>
+						<div class="name node"><span class="arrow"></span>qwe</div>
+						<ol>
+							<li class="graname">qwe</li>
+							<li class="graname">qwe</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+			<li class="parentTitle node"><span class="arrow"></span>qwe</li>
+		</ul>
+	</div>
+	<script src="data.js"></script>
+	<script>
+		class Init {
+			constructor () {
+				this.title = document.getElementsByClassName('name');
+				this.isShow = document.getElementsByClassName('node');
+				this.parentTitle = document.getElementsByClassName('parentTitle');
+				this.graname = document.getElementsByClassName('graname');
+				this.$arrow = document.getElementsByClassName('arrow');
+				this.node = node;
+				this.arrow = "+";
+				this.arr = [];
+				this.graArr = [];
+				this.getnode();
+				this.handler();
+			}
+
+			getnode () {
+				let _this = this;
+				this.node.forEach(function (item,index){
+					this.parentTitle[index].textContent = `${this.arrow} ${item.name}`;
+					if (item.children) {
+						item.children.forEach(function (items,index) {
+						this.arr.push(items.name);		
+							if (items.grachildren) {
+									items.grachildren.forEach(function (item) {
+										this.graArr.push(item.name)
+									}.bind(this))
+							}
+						}.bind(this));
+					}
+				}.bind(this));
+				for(let i = 0 ,len = this.title.length; i < len ; i++ ){
+					this.title[i].textContent = this.arr[i];
+				}
+
+				for(let i = 0 ,len = this.graname.length; i < len ; i++ ){
+					this.graname[i].textContent = this.graArr[i];
+				}
+			}
+
+			handler () {
+				let _this = this;
+				for (let i = this.isShow.length -1 ;i-- ;) {
+					this.isShow[i].addEventListener('click',function (e) {
+						_this.show(e);
+					});
+				}
+				
+			}
+
+			show (e) {
+				let _this = this;
+				let currentStyle = e.target.nextElementSibling;
+				getComputedStyle(currentStyle, null)['display'] == 'none' ? currentStyle.style.display = 'inline-block' : currentStyle.style.display = 'none';
+				if (getComputedStyle(currentStyle, null)['display'] == 'none') {
+					_this.arrow = "+";
+				}else{
+					_this.arrow = "-";
+				}
+				//e.target.children.textContent = this.arrow
+			}
+		}
+
+		var init = new Init()
+	</script>
+</body>
+</html>
