@@ -34,7 +34,7 @@ Created 2017.2.27 By Cara
 	transition: all .3s linear;
 }
 ```
-最后为了刷新清楚hash值 用了js判断是否hash值为空
+最后为了刷新清除hash值 用了js判断是否hash值为空
 
 ### demo地址 : https://caraws.github.io/IFE/IFE2017/collapse/index.html
 
