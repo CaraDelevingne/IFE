@@ -3,7 +3,7 @@
 
 ## 思路及问题
 
-###任务轮播
+### 任务轮播
 用一个div.box包裹6张图片并声明3D,父级.wrapper用 perspective:800px 声明视距;perspective-origin:center以中心点旋转,之后控制这个.box的rotateY来旋转
 关键代码:
     css代码:
