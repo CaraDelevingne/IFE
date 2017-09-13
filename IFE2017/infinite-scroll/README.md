@@ -14,4 +14,4 @@
 
 5. 加载完成之后, 删除 loading 动画, isLoading 状态改为 false 
 
-[线上demo](https://caraws.github.io/IFE/IFE2017/infinite-srcoll/index.html)
+[线上demo](https://caraws.github.io/IFE/IFE2017/infinite-scroll/index.html)
