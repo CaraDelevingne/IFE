@@ -1,0 +1,45 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+html, body {
+	perspective: 5000px;
+}
+.container {
+	width: 500px;
+	height: 500px;
+	position: relative;
+	border-radius: 50%;
+	margin: 80px auto;
+	/*transform-style: preserve-3d;
+	perspective: 1000px;*/
+}
+.tag {
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: rgb(0, 0, 0);
+	display: inline-block;
+	font-size: 16px;
+}
+.tag:hover {
+	font-weight: bold;
+}
+
+.control {
+	width: 200px;
+	height: 200px;
+	float: left;
+	margin: 20px;
+}
+.content {
+	width: 200px;
+	height: 70px;
+	outline: none;
+	color: #777777;
+}
+
+.number,.speed{
+    width:200px;
+    height:40px;
+}
