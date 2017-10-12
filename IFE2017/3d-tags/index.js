@@ -4,9 +4,9 @@
 		data = ["JavaScript", "Node.Js", "HTML", "CSS", "vue", "react"
 				, "JQuery", "Webpack", "Babel", "ES6", "WebSocket"],
 		container = document.querySelector('.container'),
-		
 		content = document.getElementById('content'),
-		speed = 0,
+		interval,
+		speed = 100,
 		num = 120,
 		radius = 300,
 		fallLength = 500,
@@ -69,6 +69,7 @@
 			alert('请输入大于0的数值')
 		}else {
 			speed = +this.value;
+			clearInterval(interval)
 			animate()
 		}
 	})
@@ -76,8 +77,8 @@
 	let tags = [];
 
 	// setBall
-	const setBall = tagLabel => {
-		let opa, fontSize;
+	const setBall = _ => {
+		let tagLabel = document.querySelectorAll('.tag');
 		for (let i = 0; i < tagLabel.length; i++) {
 			let k = (2 * (i + 1) - 1) / tagLabel.length - 1,
 				a = Math.acos(k), // 反余弦
@@ -87,10 +88,6 @@
 				z = radius * Math.cos(a);
 
 			let t = new tag(tagLabel[i], x, y, z);
-
-			// tagLabel[i].style.color = `rgb(${parseInt(Math.random()*255)}, 
-			// 	${parseInt(Math.random()*255)}, ${parseInt(Math.random()*255)})`;
-			// 	
 			tags.push(t);
 			t.move()
 		}
@@ -128,7 +125,8 @@
 
 
 	const animate = _ => {
-		setInterval(function () {
+
+		interval = setInterval(function () {
 			rotateX();
 			rotateY();
 			tags.forEach(function () {
