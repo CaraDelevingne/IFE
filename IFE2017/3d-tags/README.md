@@ -27,15 +27,15 @@ z = R * cosθ
 ### 关键代码
 ```javascript
 const setBall = _ => {
-	// 标签
-	let tagLabel = document.querySelector('.tag');
-	for (let i =0, len = tagLabel.length; i < len; i++) {
-		let k = (2 * (i + 1) - 1) / len - 1,
-			a = acos(k),
-			b = a * sqrt(len * Math.PI),
-			x = radius * Math.sin(a) * Math.cos(b),
-			y = radius * Math.sin(a) * Math.sin(b),
-			z = radius * Math.cos(a);
+　// 标签
+　let tagLabel = document.querySelector('.tag');
+　for (let i =0, len = tagLabel.length; i < len; i++) {
+	let k = (2 * (i + 1) - 1) / len - 1,
+	　a = acos(k),
+	　b = a * sqrt(len * Math.PI),
+	　x = radius * Math.sin(a) * Math.cos(b),
+	　y = radius * Math.sin(a) * Math.sin(b),
+	　z = radius * Math.cos(a);
 	}
 }
 ```
