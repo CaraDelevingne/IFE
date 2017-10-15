@@ -45,6 +45,7 @@ const setBall = _ => {
 	}
 }
 ```
+
 以上就可以取得球体所需的平均坐标点, 接下来我们就需要去操作 DOM 每个标签了.
 
 2. 标签字体及透明度计算
@@ -73,29 +74,29 @@ fallLength 是焦距, 也是一个常量, scale 和 opacity 都要通过 z 轴�
 
 然后我们需要两个函数, x 轴选择和 y 轴旋转, 关键代码如下:
 ```javascript
-	const rotateX = _ => {
-		// angleX 是事先定义好的角度值
-		let sin = Math.sin(angleX),
-			cos = Math.cos(angleX);
-		tags.forEach(function () {
-			let y1 = this.y * cos - this.z * sin,
-				z1 = this.z * cos + this.y * sin;
-			this.y = y1;
-			this.z = z1;
-		})
-	}
+const rotateX = _ => {
+	// angleX 是事先定义好的角度值
+	let sin = Math.sin(angleX),
+		cos = Math.cos(angleX);
+	tags.forEach(function () {
+		let y1 = this.y * cos - this.z * sin,
+			z1 = this.z * cos + this.y * sin;
+		this.y = y1;
+		this.z = z1;
+	})
+}
 
-	const rotateY = _ =>{
-		// angleX 是事先定义好的角度值
-		var cos = Math.cos(angleY),
-        	sin = Math.sin(angleY);
-        tags.forEach(function () {
-            var x1 = this.x * cos - this.z * sin;
-            var z1 = this.z * cos + this.x * sin;
-            this.x = x1;
-            this.z = z1;
-        })
-	}
+const rotateY = _ =>{
+	// angleX 是事先定义好的角度值
+	var cos = Math.cos(angleY),
+     	sin = Math.sin(angleY);
+  tags.forEach(function () {
+		var x1 = this.x * cos - this.z * sin;
+		var z1 = this.z * cos + this.x * sin;
+		this.x = x1;
+		this.z = z1;
+   })
+}
 ```
 这里 angleX 和 angleY 为角度值, 用来控制标签云的旋转方向和速度. 角度的正负值控制旋转方向; 大小控制旋转速度.
 
@@ -158,72 +159,7 @@ addEvent(container, "mousemove", function (e) {
   angleY = x * 0.0001;
 });
 ```
-到这里3D 云的流程差不多就走完了, 下面放一个完整的 demo 代码吧.
-
-```HTML
-<body>
-    <div class="control">
-        <textarea id="content" cols="30" rows="10" class="content" placeholder='请输入标签内容, 以逗号隔开'></textarea>
-        <br>
-        <label for="">counts</label>
-        <input type="text" class="number" id="number" placeholder="请输入20-500范围的整数, 默认120">
-        <label for="">speed</label>
-        <input type="text" class="speed" id="speed" placeholder="请输入转速, 数字越大转速越慢">
-    </div>
-    <div class="container">
-    </div>
-    <script type="text/javascript" src="index.js"></script>
-</body>
-```
-
-```CSS
-*{
-	margin: 0;
-	padding: 0;
-}
-html, body {
-	perspective: 5000px;
-}
-/* 球体外框 */
-.container {
-	width: 500px;
-	height: 500px;
-	position: relative;
-	border-radius: 50%;
-	margin: 80px auto;
-}
-/* 标签 */
-.tag {
-	position: absolute;
-	left: 0;
-	top: 0;
-	color: rgb(0, 0, 0);
-	display: inline-block;
-	font-size: 16px;
-}
-.tag:hover {
-	font-weight: bold;
-}
-/* 输入框外层 */
-.control {
-	width: 200px;
-	height: 200px;
-	float: left;
-	margin: 20px;
-}
-/* 用户输入标签内容 */
-.content {
-	width: 200px;
-	height: 70px;
-	outline: none;
-	color: #777777;
-}
-/* 用户输入数量及转速 */
-.number,.speed{
-    width:200px;
-    height:40px;
-}
-```
+到这里3D 云的流程差不多就走完了, 下面放一个完整的 js 部分代码吧.
 
 ```javascript
 (function (global) {

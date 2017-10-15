@@ -1081,29 +1081,29 @@ this.element.style.cssText = `color: rgb(
 </ol>
 <p><img alt="旋转公式" src="http://orf90agxq.bkt.clouddn.com/3d_tags/rotate.png" /></p>
 <p>然后我们需要两个函数, x 轴选择和 y 轴旋转, 关键代码如下:<br />
-<pre><code class="javascript">    const rotateX = _ =&gt; {
-        // angleX 是事先定义好的角度值
-        let sin = Math.sin(angleX),
-            cos = Math.cos(angleX);
-        tags.forEach(function () {
-            let y1 = this.y * cos - this.z * sin,
-                z1 = this.z * cos + this.y * sin;
-            this.y = y1;
-            this.z = z1;
-        })
-    }
+<pre><code class="javascript">const rotateX = _ =&gt; {
+    // angleX 是事先定义好的角度值
+    let sin = Math.sin(angleX),
+        cos = Math.cos(angleX);
+    tags.forEach(function () {
+        let y1 = this.y * cos - this.z * sin,
+            z1 = this.z * cos + this.y * sin;
+        this.y = y1;
+        this.z = z1;
+    })
+}
 
-    const rotateY = _ =&gt;{
-        // angleX 是事先定义好的角度值
-        var cos = Math.cos(angleY),
-            sin = Math.sin(angleY);
-        tags.forEach(function () {
-            var x1 = this.x * cos - this.z * sin;
-            var z1 = this.z * cos + this.x * sin;
-            this.x = x1;
-            this.z = z1;
-        })
-    }
+const rotateY = _ =&gt;{
+    // angleX 是事先定义好的角度值
+    var cos = Math.cos(angleY),
+        sin = Math.sin(angleY);
+  tags.forEach(function () {
+        var x1 = this.x * cos - this.z * sin;
+        var z1 = this.z * cos + this.x * sin;
+        this.x = x1;
+        this.z = z1;
+   })
+}
 </code></pre><br />
 这里 angleX 和 angleY 为角度值, 用来控制标签云的旋转方向和速度. 角度的正负值控制旋转方向; 大小控制旋转速度.</p>
 <ol>
@@ -1165,70 +1165,7 @@ addEvent(container, &quot;mousemove&quot;, function (e) {
   angleY = x * 0.0001;
 });
 </code></pre><br />
-到这里3D 云的流程差不多就走完了, 下面放一个完整的 demo 代码吧.</p>
-<pre><code class="HTML">&lt;body&gt;
-    &lt;div class=&quot;control&quot;&gt;
-        &lt;textarea id=&quot;content&quot; cols=&quot;30&quot; rows=&quot;10&quot; class=&quot;content&quot; placeholder='请输入标签内容, 以逗号隔开'&gt;&lt;/textarea&gt;
-        &lt;br&gt;
-        &lt;label for=&quot;&quot;&gt;counts&lt;/label&gt;
-        &lt;input type=&quot;text&quot; class=&quot;number&quot; id=&quot;number&quot; placeholder=&quot;请输入20-500范围的整数, 默认120&quot;&gt;
-        &lt;label for=&quot;&quot;&gt;speed&lt;/label&gt;
-        &lt;input type=&quot;text&quot; class=&quot;speed&quot; id=&quot;speed&quot; placeholder=&quot;请输入转速, 数字越大转速越慢&quot;&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;container&quot;&gt;
-    &lt;/div&gt;
-    &lt;script type=&quot;text/javascript&quot; src=&quot;index.js&quot;&gt;&lt;/script&gt;
-&lt;/body&gt;
-</code></pre>
-
-<pre><code class="CSS">*{
-    margin: 0;
-    padding: 0;
-}
-html, body {
-    perspective: 5000px;
-}
-/* 球体外框 */
-.container {
-    width: 500px;
-    height: 500px;
-    position: relative;
-    border-radius: 50%;
-    margin: 80px auto;
-}
-/* 标签 */
-.tag {
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: rgb(0, 0, 0);
-    display: inline-block;
-    font-size: 16px;
-}
-.tag:hover {
-    font-weight: bold;
-}
-/* 输入框外层 */
-.control {
-    width: 200px;
-    height: 200px;
-    float: left;
-    margin: 20px;
-}
-/* 用户输入标签内容 */
-.content {
-    width: 200px;
-    height: 70px;
-    outline: none;
-    color: #777777;
-}
-/* 用户输入数量及转速 */
-.number,.speed{
-    width:200px;
-    height:40px;
-}
-</code></pre>
-
+到这里3D 云的流程差不多就走完了, 下面放一个完整的 js 部分代码吧.</p>
 <pre><code class="javascript">(function (global) {
     let speedLabel = document.getElementById('speed'),
         numberLabel = document.getElementById('number'),
