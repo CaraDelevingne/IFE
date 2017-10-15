@@ -10,14 +10,13 @@
 		num = 120,
 		radius = 300,
 		fallLength = 500,
-		angleX = Math.PI / 200,
-		angleY = Math.PI / 200,
+		angleX = Math.PI / 500,
+		angleY = Math.PI / 500,
 		CX = container.offsetWidth / 2,
 		CY = container.offsetHeight / 2,
 		EX = container.offsetLeft,
 		EY = container.offsetTop;
 
-		// var tagLabel = document.querySelectorAll('.tag');
 
 	// 创建标签
 	const createLabel = (data, num) => {
@@ -157,24 +156,18 @@
         })
 	}
 
+	// 鼠标移动
 	addEvent(container, "mousemove", function (e) {
-            var x = e.clientX - EX - CX;
-            var y = e.clientY - EY - CY;
-            angleX = y * 0.0001;
-            angleY = x * 0.0001;
-        });
+        var x = e.clientX - EX - CX;
+        var y = e.clientY - EY - CY;
+        angleX = y * 0.0001;
+        angleY = x * 0.0001;
+    });
 
-
-
+	// 初始化
 	createLabel(data, num);
 	var tagLabel = document.querySelectorAll('.tag');
 	setBall(tagLabel);
 	animate()
-
-
-
-	
-
-
 
 })(window)
