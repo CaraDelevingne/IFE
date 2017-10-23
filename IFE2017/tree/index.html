@@ -1,125 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Tree</title>
-	<style type="text/css">
-		*{
-			margin: 0 auto;
-			list-style-type: none;
-		}
-		::selection{
-			background: transparent;
-		}
-		.wrapper{
-			width: 50%;
-		}
-		.node{
-			cursor: pointer;
-		    margin: -20px 0 0 20px;
-		}
-		.node+ol {
-			display: none;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <title>Tree</title>
+    <style type="text/css">
+        * {
+            margin: 0 auto;
+            list-style-type: none;
+        }
+        
+         ::selection {
+            background: transparent;
+        }
+        
+        .wrapper {
+            width: 50%;
+        }
+        
+        .node {
+            cursor: pointer;
+            margin: -20px 0 0 20px;
+        }
+        
+        .node+ol {
+            display: none;
+        }
+    </style>
 </head>
+
 <body>
-	<div class="wrapper">
-		<h2>tree</h2>
-		<ul >
-			<li>
-				<span class="arrow">+</span>
-				<div class="parentTitle node">qwe</div>
-				<ol>
-					<li class="name">qwe</li>
-					<li class="name">qwe</li>
-					<li class="name">qwe</li>
-					<li class="name">qwe</li>
-				</ol>
-			</li>
-			<li class="">
-				<span class="arrow">+</span>
-				<div class="parentTitle node">qwe</div>
-				<ol>
-					<li class="name">qwe</li>
-					<li>
-						<span class="arrow">+</span>
-						<div class="name node">qwe</div>
-						<ol>
-							<li class="graname">qwe</li>
-							<li class="graname">qwe</li>
-						</ol>
-					</li>
-				</ol>
-			</li>
-			<span class="arrow">+</span>
-			<li class="parentTitle node">qwe</li>
-		</ul>
-	</div>
-	<script src="data.js"></script>
-	<script>
-		class Init {
-			constructor () {
-				this.title = document.getElementsByClassName('name');
-				this.isShow = document.getElementsByClassName('node');
-				this.parentTitle = document.getElementsByClassName('parentTitle');
-				this.graname = document.getElementsByClassName('graname');
-				this.$arrow = document.getElementsByClassName('arrow');
-				this.node = node;
-				this.arrow = "+";
-				this.arr = [];
-				this.graArr = [];
-				this.getnode();
-				this.handler();
-			}
-			//取数据
-			getnode () {
-				this.node.forEach(function (item,index){
-					this.parentTitle[index].textContent = item.name;
-					if (item.children) {
-						item.children.forEach(function (items,index) {
-						this.arr.push(items.name);		
-							if (items.grachildren) {
-								items.grachildren.forEach(function (item) {
-									this.graArr.push(item.name)
-								}.bind(this))
-							}
-						}.bind(this));
-					}
-				}.bind(this));
-				for(let i = 0 ,len = this.title.length; i < len ; i++ ){
-					this.title[i].textContent = this.arr[i];
-				}
+    <div class="wrapper">
+        <h2>tree</h2>
+        <ul>
+            <li>
+                <span class="arrow">+</span>
+                <div class="parentTitle node">qwe</div>
+                <ol>
+                    <li class="name">qwe</li>
+                    <li class="name">qwe</li>
+                    <li class="name">qwe</li>
+                    <li class="name">qwe</li>
+                </ol>
+            </li>
+            <li class="">
+                <span class="arrow">+</span>
+                <div class="parentTitle node">qwe</div>
+                <ol>
+                    <li class="name">qwe</li>
+                    <li>
+                        <span class="arrow">+</span>
+                        <div class="name node">qwe</div>
+                        <ol>
+                            <li class="graname">qwe</li>
+                            <li class="graname">qwe</li>
+                        </ol>
+                    </li>
+                </ol>
+            </li>
+            <span class="arrow">+</span>
+            <li class="parentTitle node">qwe</li>
+        </ul>
+    </div>
+    <script src="data.js"></script>
+    <script>
+        class Init {
+            constructor() {
+                    this.title = document.getElementsByClassName('name');
+                    this.isShow = document.getElementsByClassName('node');
+                    this.parentTitle = document.getElementsByClassName('parentTitle');
+                    this.graname = document.getElementsByClassName('graname');
+                    this.$arrow = document.getElementsByClassName('arrow');
+                    this.node = node;
+                    this.arrow = "+";
+                    this.arr = [];
+                    this.graArr = [];
+                    this.getnode();
+                    this.handler();
+                }
+                //取数据
+            getnode() {
+                    this.node.forEach(function(item, index) {
+                        this.parentTitle[index].textContent = item.name;
+                        if (item.children) {
+                            item.children.forEach(function(items, index) {
+                                this.arr.push(items.name);
+                                if (items.grachildren) {
+                                    items.grachildren.forEach(function(item) {
+                                        this.graArr.push(item.name)
+                                    }.bind(this))
+                                }
+                            }.bind(this));
+                        }
+                    }.bind(this));
+                    for (let i = 0, len = this.title.length; i < len; i++) {
+                        this.title[i].textContent = this.arr[i];
+                    }
 
-				for(let i = 0 ,len = this.graname.length; i < len ; i++ ){
-					this.graname[i].textContent = this.graArr[i];
-				}
-			}
-			//处理事件
-			handler () {
-				let _this = this;
-				for (let i = this.isShow.length -1 ;i-- ;) {
-					this.isShow[i].addEventListener('click',function (e) {
-						_this.show(e);
-					});
-				}
-				
-			}
-			//符号改变及dom显示隐藏
-			show (e) {
-				let _this = this;
-				let currentStyle = e.target.nextElementSibling;
-				getComputedStyle(currentStyle, null)['display'] == 'none' ? currentStyle.style.display = 'inline-block' : currentStyle.style.display = 'none';
-				if (getComputedStyle(currentStyle, null)['display'] == 'none') {
-					_this.arrow = "+";
-				}else{
-					_this.arrow = "-";
-				}
-				e.target.previousElementSibling.textContent = this.arrow
-			}
-		}
+                    for (let i = 0, len = this.graname.length; i < len; i++) {
+                        this.graname[i].textContent = this.graArr[i];
+                    }
+                }
+                //处理事件
+            handler() {
+                    let _this = this;
+                    for (let i = this.isShow.length - 1; i--;) {
+                        this.isShow[i].addEventListener('click', function(e) {
+                            _this.show(e);
+                        });
+                    }
 
-		var init = new Init()
-	</script>
+                }
+                //符号改变及dom显示隐藏
+            show(e) {
+                let _this = this;
+                let currentStyle = e.target.nextElementSibling;
+                getComputedStyle(currentStyle, null)['display'] == 'none' ? currentStyle.style.display = 'inline-block' : currentStyle.style.display = 'none';
+                if (getComputedStyle(currentStyle, null)['display'] == 'none') {
+                    _this.arrow = "+";
+                } else {
+                    _this.arrow = "-";
+                }
+                e.target.previousElementSibling.textContent = this.arrow
+            }
+        }
+
+        var init = new Init()
+    </script>
 </body>
+
 </html>

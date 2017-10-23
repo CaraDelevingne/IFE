@@ -26,61 +26,61 @@
 
     最后需要实例化 var Fm  = new DouBanFm();
 
-``` 关键代码
+``` javascript
     //所有事件处理
     handler () {
-		this.$play.addEventListener('click', this.play.bind(this));
-		this.$pause.addEventListener('click', this.pause.bind(this));
-		this.$prev.addEventListener('click', this.prev.bind(this));
-		this.$next.addEventListener('click', this.next.bind(this));
-		this.volume.addEventListener('click', this.setVolume.bind(this));
-		this.progress.addEventListener('click', this.setProgress.bind(this));
-		this.audio.addEventListener('ended', this.next.bind(this));
-		this.audio.addEventListener('timeupdate', this.updataProgress.bind(this));
-		this.loadAndPlay(0)
-	}
-	//读取数据
-	loadAndPlay (index) {
-		this.musicListIndex = index;
-		this.song = this.musicList[this.musicListIndex];
-		this.load();
-		this.play();
-	}
-	//获取数据并复赋值
-	load () {
-		this.title.textContent = this.song.title;
-		this.author.textContent = this.song.artist;
-		this.cover.src = this.song.picture;
-		this.audio.src = this.song.url;
-		document.title = this.song.title;
-	}
+        this.$play.addEventListener('click', this.play.bind(this));
+        this.$pause.addEventListener('click', this.pause.bind(this));
+        this.$prev.addEventListener('click', this.prev.bind(this));
+        this.$next.addEventListener('click', this.next.bind(this));
+        this.volume.addEventListener('click', this.setVolume.bind(this));
+        this.progress.addEventListener('click', this.setProgress.bind(this));
+        this.audio.addEventListener('ended', this.next.bind(this));
+        this.audio.addEventListener('timeupdate', this.updataProgress.bind(this));
+        this.loadAndPlay(0)
+    }
+    //读取数据
+    loadAndPlay (index) {
+        this.musicListIndex = index;
+        this.song = this.musicList[this.musicListIndex];
+        this.load();
+        this.play();
+    }
+    //获取数据并复赋值
+    load () {
+        this.title.textContent = this.song.title;
+        this.author.textContent = this.song.artist;
+        this.cover.src = this.song.picture;
+        this.audio.src = this.song.url;
+        document.title = this.song.title;
+    }
 
     //设置音量
-	setVolume (e) {
-		//获得矩形对象:
-		const rect = this.volume.getBoundingClientRect();
-		//鼠标位置 - 左偏移量 / 元素宽度 ;算出选了占整个音量条的百分比
-		const volume = (e.x - rect.left) / rect.width;
-		this.volumeValue.style.width = volume * 100 + '%';
-		this.audio.volume = volume;
-	}
-	//设置进度条
-	setProgress (e) {
-		//当前时间
-		this.audio.currentTime = e.offsetX / this.progress.clientWidth * this.audio.duration;
-	}
-	//更新当前播放时间
-	updataProgress () {
-		let minute = parseInt(this.audio.currentTime / 60);
-		let second = parseInt((this.audio.currentTime - minute) % 60);
-		if (second < 10 ) {
-			second = '0' + second;
-		}if (minute < 10) {
-			minute = '0' + minute;
-		}
-		this.time.textContent = `${minute}:${second}`;
-		this.progressValue.style.width = (this.audio.currentTime / this.audio.duration * 100) +'%';
-	}
+    setVolume (e) {
+        //获得矩形对象:
+        const rect = this.volume.getBoundingClientRect();
+        //鼠标位置 - 左偏移量 / 元素宽度 ;算出选了占整个音量条的百分比
+        const volume = (e.x - rect.left) / rect.width;
+        this.volumeValue.style.width = volume * 100 + '%';
+        this.audio.volume = volume;
+    }
+    //设置进度条
+    setProgress (e) {
+        //当前时间
+        this.audio.currentTime = e.offsetX / this.progress.clientWidth * this.audio.duration;
+    }
+    //更新当前播放时间
+    updataProgress () {
+        let minute = parseInt(this.audio.currentTime / 60);
+        let second = parseInt((this.audio.currentTime - minute) % 60);
+        if (second < 10 ) {
+            second = '0' + second;
+        }if (minute < 10) {
+            minute = '0' + minute;
+        }
+        this.time.textContent = `${minute}:${second}`;
+        this.progressValue.style.width = (this.audio.currentTime / this.audio.duration * 100) +'%';
+    }
 ```
 
 #### analyser.js 可视化音频流 函数说明
@@ -94,47 +94,47 @@
 注意 : 最后在index.js中实例化该类并在constructor中调用.由于这里用的不是本地音乐所以有跨域的问题,会导致获取不到音频播放器也不会播放.
        所以歌曲都用的别人做好的,服务端做过处理.
 
-``` 关键代码
+``` javascript
     constructor (element,audio) {
-		this.canvas = document.querySelector(element);
-		this.canvas.width = document.querySelector(".wrapper").clientWidth;
-		this.canvas.height = 256;
-		this.canvasContext = this.canvas.getContext('2d');
+        this.canvas = document.querySelector(element);
+        this.canvas.width = document.querySelector(".wrapper").clientWidth;
+        this.canvas.height = 256;
+        this.canvasContext = this.canvas.getContext('2d');
 
-		//解决跨域,服务端要做响应处理,这里直接用的别人做好了的
-		audio.crossOrigin = 'Anonymous';
-		//创建音频处理接口,音频上下文
-		this.audioContext = new AudioContext();
-		//创建控制节点
-		this.analyser = this.audioContext.createAnalyser();
-		//创建媒体节点
-		this.audioSource = this.audioContext.createMediaElementSource(audio);
-		////连接：媒体节点 → 控制节点 → 输出源
-		this.audioSource.connect(this.analyser);
-		//最终输出到音频播放器
-		this.analyser.connect(this.audioContext.destination);
-		//出来的数组为8bit整型数组，即值为0~256，整个数组长度为1024，即会有1024个频率
-		let bufferLength = this.analyser.frequencyBinCount;
-		//将音频节点的数据拷贝到Uin8Array中
-		this.dataArray = new Uint8Array(bufferLength);
-		this.draw();
-	}
+        //解决跨域,服务端要做响应处理,这里直接用的别人做好了的
+        audio.crossOrigin = 'Anonymous';
+        //创建音频处理接口,音频上下文
+        this.audioContext = new AudioContext();
+        //创建控制节点
+        this.analyser = this.audioContext.createAnalyser();
+        //创建媒体节点
+        this.audioSource = this.audioContext.createMediaElementSource(audio);
+        ////连接：媒体节点 → 控制节点 → 输出源
+        this.audioSource.connect(this.analyser);
+        //最终输出到音频播放器
+        this.analyser.connect(this.audioContext.destination);
+        //出来的数组为8bit整型数组，即值为0~256，整个数组长度为1024，即会有1024个频率
+        let bufferLength = this.analyser.frequencyBinCount;
+        //将音频节点的数据拷贝到Uin8Array中
+        this.dataArray = new Uint8Array(bufferLength);
+        this.draw();
+    }
 
-	draw () {
-		//执行动画
-		requestAnimationFrame(this.draw.bind(this));
-		//将音频节点的数据拷贝到Uin8Array中
-		this.analyser.getByteFrequencyData(this.dataArray);
-		let length = this.analyser.fftSize / 3;
-		//数组长度与画布宽度比例:平分
-		let width = this.canvas.width / length;
-		this.canvasContext.clearRect(0,0,this.canvas.width,this.canvas.height);
-		for (let i = 0; i < length; i ++) {
-			let barHeight = this.dataArray[i];
-	        this.canvasContext.fillStyle = 'rgba(47, 152, 66, 0.2)';
-	        this.canvasContext.fillRect(i * width, this.canvas.height - barHeight , width, barHeight);
-	    }
-	}
+    draw () {
+        //执行动画
+        requestAnimationFrame(this.draw.bind(this));
+        //将音频节点的数据拷贝到Uin8Array中
+        this.analyser.getByteFrequencyData(this.dataArray);
+        let length = this.analyser.fftSize / 3;
+        //数组长度与画布宽度比例:平分
+        let width = this.canvas.width / length;
+        this.canvasContext.clearRect(0,0,this.canvas.width,this.canvas.height);
+        for (let i = 0; i < length; i ++) {
+            let barHeight = this.dataArray[i];
+            this.canvasContext.fillStyle = 'rgba(47, 152, 66, 0.2)';
+            this.canvasContext.fillRect(i * width, this.canvas.height - barHeight , width, barHeight);
+        }
+    }
 ```
 
 
