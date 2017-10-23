@@ -52,7 +52,7 @@ const setBall = _ => {
 ```javascript
 // fallLength 为焦距
 let scale = fallLength/ (fallLength - this.z),
-	  opa = (this.z + radius) / (2 * radius);
+	opa = (this.z + radius) / (2 * radius);
 // 每个标签添加样式
 this.element.style.cssText = `color: rgb(
 	${parseInt(Math.random() * 255)}, 
@@ -89,7 +89,7 @@ const rotateX = _ => {
 const rotateY = _ =>{
 	// angleX 是事先定义好的角度值
 	var cos = Math.cos(angleY),
-     	sin = Math.sin(angleY);
+	 	sin = Math.sin(angleY);
   tags.forEach(function () {
 		var x1 = this.x * cos - this.z * sin;
 		var z1 = this.z * cos + this.x * sin;
@@ -257,10 +257,10 @@ addEvent(container, "mousemove", function (e) {
 	};
 
 	Array.prototype.forEach = function (callback) {
-        for(let i = 0; i < this.length; i++) {
-            callback.call(this[i]);
-        }
-    }
+		for(let i = 0; i < this.length; i++) {
+			callback.call(this[i]);
+		}
+	}
 
 
 
@@ -309,22 +309,22 @@ addEvent(container, "mousemove", function (e) {
 
 	const rotateY = _ =>{
 		var cos = Math.cos(angleY),
-        	sin = Math.sin(angleY);
-        tags.forEach(function () {
-            var x1 = this.x * cos - this.z * sin;
-            var z1 = this.z * cos + this.x * sin;
-            this.x = x1;
-            this.z = z1;
-        })
+			sin = Math.sin(angleY);
+		tags.forEach(function () {
+			var x1 = this.x * cos - this.z * sin;
+			var z1 = this.z * cos + this.x * sin;
+			this.x = x1;
+			this.z = z1;
+		})
 	}
 
 	// 鼠标移动
 	addEvent(container, "mousemove", function (e) {
-        var x = e.clientX - EX - CX;
-        var y = e.clientY - EY - CY;
-        angleX = y * 0.0001;
-        angleY = x * 0.0001;
-    });
+		var x = e.clientX - EX - CX;
+		var y = e.clientY - EY - CY;
+		angleX = y * 0.0001;
+		angleY = x * 0.0001;
+	});
 
 	// 初始化
 	createLabel(data, num);
