@@ -106,14 +106,14 @@ const rotateY = _ =>{
 ```javascript
 // 来个事件监听
 const addEvent = function (element, event, fn) {
-		if (element.addEventListener) {
-			element.addEventListener(event, fn, false)
-		}else if (element.attachEvent) {
-			element.attachEvent('on' + event, fn)
-		}else {
-			element['on' + event] = fn
-		}
-	};
+	if (element.addEventListener) {
+		element.addEventListener(event, fn, false)
+	}else if (element.attachEvent) {
+		element.attachEvent('on' + event, fn)
+	}else {
+		element['on' + event] = fn
+	}
+};
 
 // 获取用户输入标签
 addEvent(content, 'blur', function () {
@@ -154,9 +154,9 @@ addEvent(container, "mousemove", function (e) {
 	// EX: 宽度的一半; CX: 左边距
 	// EY: 高度的一半; CY: 上边距
 	var x = e.clientX - EX - CX;
-  var y = e.clientY - EY - CY;
-  angleX = y * 0.0001;
-  angleY = x * 0.0001;
+  	var y = e.clientY - EY - CY;
+  	angleX = y * 0.0001;
+  	angleY = x * 0.0001;
 });
 ```
 到这里3D 云的流程差不多就走完了, 下面放一个完整的 js 部分代码吧.
@@ -305,7 +305,7 @@ addEvent(container, "mousemove", function (e) {
 			this.y = y1;
 			this.z = z1;
 		})
-	}
+	};
 
 	const rotateY = _ =>{
 		var cos = Math.cos(angleY),
@@ -316,7 +316,7 @@ addEvent(container, "mousemove", function (e) {
 			this.x = x1;
 			this.z = z1;
 		})
-	}
+	};
 
 	// 鼠标移动
 	addEvent(container, "mousemove", function (e) {
