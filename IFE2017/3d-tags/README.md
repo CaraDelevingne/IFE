@@ -8,7 +8,7 @@
 
 ### 相关的一些公式及说明
 
-1. 球体 x/ y/ z 轴的坐标点 
+1. 球体 x/ y/ z 轴的坐标点
 已知半径 R 和球心, 方便起见一般都以坐标轴的原点作为球心. 有如下三个方程式:
 ```javascript
 x = R * sinθ * cosø
@@ -33,9 +33,9 @@ const setBall = _ => {
 	let tagLabel = document.querySelector('.tag');
 	for (let i =0, len = tagLabel.length; i < len; i++) {
 		let k = (2 * (i + 1) - 1) / len - 1,
-			a = acos(k), // 上述θ 
+			a = acos(k), // 上述θ
 			b = a * sqrt(len * Math.PI), // 上述ø
-			x = radius * Math.sin(a) * Math.cos(b), 
+			x = radius * Math.sin(a) * Math.cos(b),
 			y = radius * Math.sin(a) * Math.sin(b),
 			z = radius * Math.cos(a);
 		// 让球体动起来, 我们先把方法放在这儿
@@ -55,8 +55,8 @@ let scale = fallLength/ (fallLength - this.z),
 	opa = (this.z + radius) / (2 * radius);
 // 每个标签添加样式
 this.element.style.cssText = `color: rgb(
-	${parseInt(Math.random() * 255)}, 
-	${parseInt(Math.random() * 255)}, 
+	${parseInt(Math.random() * 255)},
+	${parseInt(Math.random() * 255)},
 	${parseInt(Math.random() * 255)});
 	font-size: ${parseInt(15 * scale)}px;
 	opacity: ${opa + 0.5};
@@ -68,7 +68,7 @@ this.element.style.cssText = `color: rgb(
 fallLength 是焦距, 也是一个常量, scale 和 opacity 都要通过 z 轴来调整的. 这里也是从别人的代码里看到的, 应该也是公式吧; 后面就是调整字体大小/ 透明度, 标签位置的操作了. 以上计算就是`move()`函数中的内容. 现在球体已经出来了, 那么就该让他动起来了.
 
 3. 旋转算法
-为了让球体动起来, 我们需要知道下面这三个公式: 
+为了让球体动起来, 我们需要知道下面这三个公式:
 
 ![旋转公式](http://orf90agxq.bkt.clouddn.com/3d_tags/rotate.png)
 
@@ -90,12 +90,12 @@ const rotateY = _ =>{
 	// angleX 是事先定义好的角度值
 	var cos = Math.cos(angleY),
 	 	sin = Math.sin(angleY);
-  tags.forEach(function () {
+	tags.forEach(function () {
 		var x1 = this.x * cos - this.z * sin;
 		var z1 = this.z * cos + this.x * sin;
 		this.x = x1;
 		this.z = z1;
-   })
+	 })
 }
 ```
 这里 angleX 和 angleY 为角度值, 用来控制标签云的旋转方向和速度. 角度的正负值控制旋转方向; 大小控制旋转速度.
@@ -154,9 +154,9 @@ addEvent(container, "mousemove", function (e) {
 	// EX: 宽度的一半; CX: 左边距
 	// EY: 高度的一半; CY: 上边距
 	var x = e.clientX - EX - CX;
-  	var y = e.clientY - EY - CY;
-  	angleX = y * 0.0001;
-  	angleY = x * 0.0001;
+		var y = e.clientY - EY - CY;
+		angleX = y * 0.0001;
+		angleY = x * 0.0001;
 });
 ```
 到这里3D 云的流程差不多就走完了, 下面放一个完整的 js 部分代码吧.
@@ -276,7 +276,7 @@ addEvent(container, "mousemove", function (e) {
 		move: function () {
 			let scale = fallLength/ (fallLength - this.z),
 				opa = (this.z + radius) / (2 * radius);
-			this.element.style.cssText = `color: rgb(${parseInt(Math.random() * 255)}, 
+			this.element.style.cssText = `color: rgb(${parseInt(Math.random() * 255)},
 				${parseInt(Math.random() * 255)}, ${parseInt(Math.random() * 255)});
 				font-size: ${parseInt(15 * scale)}px;
 				opacity: ${opa + 0.5};

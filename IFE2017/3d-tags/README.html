@@ -1022,7 +1022,7 @@ body .markdown-body
 就可以模拟出立体的效果啦.</p>
 <h3 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>相关的一些公式及说明</h3>
 <ol>
-<li>球体 x/ y/ z 轴的坐标点 <br />
+<li>球体 x/ y/ z 轴的坐标点<br />
 已知半径 R 和球心, 方便起见一般都以坐标轴的原点作为球心. 有如下三个方程式:<br />
 <pre><code class="javascript">x = R * sinθ * cosø
 y = R * sinθ * sinø
@@ -1043,9 +1043,9 @@ z = R * cosθ
     let tagLabel = document.querySelector('.tag');
     for (let i =0, len = tagLabel.length; i &lt; len; i++) {
         let k = (2 * (i + 1) - 1) / len - 1,
-            a = acos(k), // 上述θ 
+            a = acos(k), // 上述θ
             b = a * sqrt(len * Math.PI), // 上述ø
-            x = radius * Math.sin(a) * Math.cos(b), 
+            x = radius * Math.sin(a) * Math.cos(b),
             y = radius * Math.sin(a) * Math.sin(b),
             z = radius * Math.cos(a);
         // 让球体动起来, 我们先把方法放在这儿
@@ -1061,11 +1061,11 @@ z = R * cosθ
 <li>标签字体及透明度计算<br />
 <pre><code class="javascript">// fallLength 为焦距
 let scale = fallLength/ (fallLength - this.z),
-      opa = (this.z + radius) / (2 * radius);
+    opa = (this.z + radius) / (2 * radius);
 // 每个标签添加样式
 this.element.style.cssText = `color: rgb(
-    ${parseInt(Math.random() * 255)}, 
-    ${parseInt(Math.random() * 255)}, 
+    ${parseInt(Math.random() * 255)},
+    ${parseInt(Math.random() * 255)},
     ${parseInt(Math.random() * 255)});
     font-size: ${parseInt(15 * scale)}px;
     opacity: ${opa + 0.5};
@@ -1077,7 +1077,7 @@ this.element.style.cssText = `color: rgb(
 <p>fallLength 是焦距, 也是一个常量, scale 和 opacity 都要通过 z 轴来调整的. 这里也是从别人的代码里看到的, 应该也是公式吧; 后面就是调整字体大小/ 透明度, 标签位置的操作了. 以上计算就是<code>move()</code>函数中的内容. 现在球体已经出来了, 那么就该让他动起来了.</p>
 <ol>
 <li>旋转算法<br />
-为了让球体动起来, 我们需要知道下面这三个公式: </li>
+为了让球体动起来, 我们需要知道下面这三个公式:</li>
 </ol>
 <p><img alt="旋转公式" src="http://orf90agxq.bkt.clouddn.com/3d_tags/rotate.png" /></p>
 <p>然后我们需要两个函数, x 轴选择和 y 轴旋转, 关键代码如下:<br />
@@ -1097,12 +1097,12 @@ const rotateY = _ =&gt;{
     // angleX 是事先定义好的角度值
     var cos = Math.cos(angleY),
         sin = Math.sin(angleY);
-  tags.forEach(function () {
+    tags.forEach(function () {
         var x1 = this.x * cos - this.z * sin;
         var z1 = this.z * cos + this.x * sin;
         this.x = x1;
         this.z = z1;
-   })
+     })
 }
 </code></pre><br />
 这里 angleX 和 angleY 为角度值, 用来控制标签云的旋转方向和速度. 角度的正负值控制旋转方向; 大小控制旋转速度.</p>
@@ -1112,14 +1112,14 @@ const rotateY = _ =&gt;{
 </ol>
 <p><pre><code class="javascript">// 来个事件监听
 const addEvent = function (element, event, fn) {
-        if (element.addEventListener) {
-            element.addEventListener(event, fn, false)
-        }else if (element.attachEvent) {
-            element.attachEvent('on' + event, fn)
-        }else {
-            element['on' + event] = fn
-        }
-    };
+    if (element.addEventListener) {
+        element.addEventListener(event, fn, false)
+    }else if (element.attachEvent) {
+        element.attachEvent('on' + event, fn)
+    }else {
+        element['on' + event] = fn
+    }
+};
 
 // 获取用户输入标签
 addEvent(content, 'blur', function () {
@@ -1160,9 +1160,9 @@ addEvent(container, &quot;mousemove&quot;, function (e) {
     // EX: 宽度的一半; CX: 左边距
     // EY: 高度的一半; CY: 上边距
     var x = e.clientX - EX - CX;
-  var y = e.clientY - EY - CY;
-  angleX = y * 0.0001;
-  angleY = x * 0.0001;
+        var y = e.clientY - EY - CY;
+        angleX = y * 0.0001;
+        angleY = x * 0.0001;
 });
 </code></pre><br />
 到这里3D 云的流程差不多就走完了, 下面放一个完整的 js 部分代码吧.</p>
@@ -1280,7 +1280,7 @@ addEvent(container, &quot;mousemove&quot;, function (e) {
         move: function () {
             let scale = fallLength/ (fallLength - this.z),
                 opa = (this.z + radius) / (2 * radius);
-            this.element.style.cssText = `color: rgb(${parseInt(Math.random() * 255)}, 
+            this.element.style.cssText = `color: rgb(${parseInt(Math.random() * 255)},
                 ${parseInt(Math.random() * 255)}, ${parseInt(Math.random() * 255)});
                 font-size: ${parseInt(15 * scale)}px;
                 opacity: ${opa + 0.5};
@@ -1309,7 +1309,7 @@ addEvent(container, &quot;mousemove&quot;, function (e) {
             this.y = y1;
             this.z = z1;
         })
-    }
+    };
 
     const rotateY = _ =&gt;{
         var cos = Math.cos(angleY),
@@ -1320,7 +1320,7 @@ addEvent(container, &quot;mousemove&quot;, function (e) {
             this.x = x1;
             this.z = z1;
         })
-    }
+    };
 
     // 鼠标移动
     addEvent(container, &quot;mousemove&quot;, function (e) {
